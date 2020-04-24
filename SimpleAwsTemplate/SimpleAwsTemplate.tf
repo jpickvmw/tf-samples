@@ -1,5 +1,5 @@
 /*
-This is a block comment
+This is a Sample Simple AWS Template
 */
 // this is comment
 variable "aws_access_key" {}

@@ -1,0 +1,18 @@
+name: Simple
+version: 1
+formatVersion: 1
+inputs: {}
+resources:
+  machine:
+    type: Cloud.vSphere.Machine
+    properties:
+      image: centos
+      cpuCount: 1
+      totalMemoryMB: 512
+  Cloud_vSphere_Machine_1:
+    type: Cloud.vSphere.Machine
+    properties:
+      image: centos
+      cpuCount: 1
+      totalMemoryMB: 512
+

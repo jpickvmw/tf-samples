@@ -2,7 +2,7 @@ variable "aws_access_key" {}
 variable "aws_secret_key" {}
 
 terraform {
-  required_version = ">= 11.0"
+  required_version = ">= 0.11"
 }
 
 provider "aws" {

@@ -1,5 +1,12 @@
 variable "aws_access_key" {}
 variable "aws_secret_key" {}
+variable "test" {
+  type = string
+  default = <<-EOD
+    Default, multi-line
+      value
+  EOD
+}
 
 terraform {
   required_version = ">= 0.11"

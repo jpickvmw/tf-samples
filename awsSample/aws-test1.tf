@@ -15,7 +15,7 @@ variable "aws_region" {
 
 provider "aws" {
   version = "2.69.0"
-  region  = "var.aws_region"
+  region  = var.aws_region
 }
 
 resource "aws_instance" "machine1" {

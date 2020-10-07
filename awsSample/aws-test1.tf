@@ -21,7 +21,7 @@ provider "aws" {
 resource "aws_instance" "machine1" {
     ami           = "ami-0a63cd87767e10ed4"
     instance_type = "t2.micro"
-    availability_zone = "us-west-1a"
+    availability_zone = "us-west-1"
     tags = {
       "type" = var.myTag
     }
@@ -30,7 +30,7 @@ resource "aws_instance" "machine1" {
 resource "aws_instance" "machine2" {
     ami           = "ami-0a63cd87767e10ed4"
     instance_type = "t2.micro"
-    availability_zone = "us-west-1c"
+    availability_zone = "us-west-1"
     tags = {
       "type" = var.myTag
     }

@@ -1,7 +1,3 @@
-provider "aws" {
-    version = "2.69.0"
-}
-
 variable "instance_type" {
   description = "AWS instance type"
   default     = "t2.micro"
@@ -12,10 +8,19 @@ variable "myTag" {
   default = "terraform-test"
 }
 
+variable "aws_region" {
+  description = "AWS region"
+  default = "us-east-1"
+}
+
+provider "aws" {
+  version = "2.69.0"
+  region  = "var.aws_region"
+}
+
 resource "aws_instance" "machine1" {
     ami           = "ami-0a63cd87767e10ed4"
     instance_type = "t2.micro"
-    region="us-west-1"
     availability_zone = "us-west-1a"
     tags = {
       "type" = var.myTag

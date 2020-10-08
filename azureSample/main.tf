@@ -9,6 +9,7 @@ provider "azurerm" {
 # Create a resource group if it doesn't exist
 resource "azurerm_resource_group" "myterraformgroup" {
   name     = "myResourceGroup"
+  location = var.myLocation
 
   tags = {
     environment = var.myTag
@@ -19,6 +20,7 @@ resource "azurerm_resource_group" "myterraformgroup" {
 resource "azurerm_virtual_network" "myterraformnetwork" {
   name                = "myVnet"
   address_space       = ["10.0.0.0/16"]
+  location            = var.myLocation
   resource_group_name = azurerm_resource_group.myterraformgroup.name
 
   tags = {
@@ -37,6 +39,7 @@ resource "azurerm_subnet" "myterraformsubnet" {
 # Create public IPs
 resource "azurerm_public_ip" "myterraformpublicip" {
   name                         = "myPublicIP"
+  location                     = var.myLocation
   resource_group_name          = azurerm_resource_group.myterraformgroup.name
   allocation_method            = "Dynamic"
 
@@ -48,6 +51,7 @@ resource "azurerm_public_ip" "myterraformpublicip" {
 # Create Network Security Group and rule
 resource "azurerm_network_security_group" "myterraformnsg" {
   name                = "myNetworkSecurityGroup"
+  location            = var.myLocation
   resource_group_name = azurerm_resource_group.myterraformgroup.name
   security_rule {
     name                       = "SSH"
@@ -69,6 +73,7 @@ resource "azurerm_network_security_group" "myterraformnsg" {
 # Create network interface
 resource "azurerm_network_interface" "myterraformnic" {
   name                      = "myNIC"
+  location                  = var.myLocation
   resource_group_name       = azurerm_resource_group.myterraformgroup.name
 
   ip_configuration {
@@ -109,6 +114,7 @@ output "tls_private_key" { value = "${tls_private_key.example_ssh.private_key_pe
 # Create virtual machine
 resource "azurerm_linux_virtual_machine" "myterraformvm" {
   name                  = var.vm_name
+  location              = var.myLocation
   resource_group_name   = azurerm_resource_group.myterraformgroup.name
   network_interface_ids = [azurerm_network_interface.myterraformnic.id]
   size                  = "Standard_DS1_v2"

@@ -7,3 +7,8 @@ variable "myTag" {
   description = "My Default Tag"
   default = "terraform-test"
 }
+
+variable "myLocation" {
+  description = "My Default Location"
+  default = "eastus"
+}

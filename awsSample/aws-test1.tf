@@ -8,14 +8,8 @@ variable "myTag" {
   default = "terraform-test"
 }
 
-variable "aws_region" {
-  description = "AWS region"
-  default = "us-east-1"
-}
-
 provider "aws" {
   version = "2.69.0"
-  region  = var.aws_region
 }
 
 resource "aws_instance" "machine1" {
